@@ -5,14 +5,18 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
+
 body {
   font-family: "Poppins", sans-serif;
-   background-color: linear-gradient(267deg, #e9a8ed 0%, #fef8d6 100%);  
+  background-color: linear-gradient(267deg, #e9a8ed 0%, #fef8d6 100%);  
   -webkit-animation: AnimationName 49s ease infinite;
   -o-animation: AnimationName 49s ease infinite;
   animation: AnimationName 49s ease infinite;
   position: relative;
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 @-webkit-keyframes AnimationName {
   0%{background-position:0% 79%}
@@ -120,27 +124,42 @@ a:hover {
   right: 0;
   background-color: white;
   width: fit-content;
+  min-width: 200px;
   max-height: 0;
   overflow: hidden;
-  transition: all 0.3 ease-in-out;
+  transition: all 0.3s ease-in-out;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
 .menu-links a {
   display: block;
-  padding: 10px;
+  padding: 15px 20px;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: black;
   text-decoration: none;
-  transition: all 0.3 ease-in-out;
+  transition: all 0.3s ease-in-out;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.menu-links a:hover {
+  background-color: #f8f9fa;
+  color: #4070f4;
 }
 
 .menu-links li {
   list-style: none;
 }
 
+.menu-links li:last-child a {
+  border-bottom: none;
+}
+
 .menu-links.open {
-  max-height: 300px;
+  max-height: 400px;
+  padding: 10px 0;
 }
 
 .hamburger-icon.open span:first-child {
@@ -235,6 +254,7 @@ section {
   margin-bottom: 1rem;
   background: linear-gradient(45deg, #4070f4, #35a887);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
 }
@@ -573,6 +593,7 @@ article .icon {
   margin: 0 auto;
   padding: 2rem;
   height: 80vh;
+  gap: 2rem;
 }
 /* 
 .profile-img {
@@ -692,22 +713,26 @@ article .icon {
 /* Project Cards */
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 3.5rem;
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   margin-bottom: 5rem;
+  justify-items: center;
 }
 
 .card {
   position: relative;
   height: 300px;
+  width: 100%;
+  max-width: 350px;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   transition: all 0.4s ease;
   background: #fff;
+  margin: 0 auto;
 }
 
 .card:hover {
@@ -1039,6 +1064,7 @@ footer p {
   margin-bottom: 1rem;
   background: linear-gradient(45deg, #4070f4, #35a887);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
 }
@@ -1269,7 +1295,11 @@ article .icon {
   flex-direction: column;
   height: auto;
   margin-top: 23%;
-  padding: 4rem 0;
+  padding: 4rem 2rem;
+  width: 100%;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
 } 
 
 
@@ -1277,7 +1307,8 @@ article .icon {
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
-  max-width: 1200px;
+  max-width: 1400px;
+  width: 95%;
   margin: 0 auto;
   padding: 3rem 2rem;
   background-color: rgba(255, 255, 255, 0.1);
@@ -1286,11 +1317,19 @@ article .icon {
   margin-bottom: 5rem;
 }
 
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+  min-width: 300px;
+}
+
 .contact-card {
   background: white;
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 15px;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   text-align: center;
   transition: transform 0.3s ease;
@@ -1309,9 +1348,9 @@ article .icon {
 
 .contact-form {
   flex: 1;
-  min-width: 320px;
+  min-width: 380px;
   background: white;
-  padding: 2.5rem;
+  padding: 3rem;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
@@ -1535,18 +1574,301 @@ footer {
 .details-container:hover {
   transform: translateY(-5px);
 }
+/* Mobile-Specific Optimizations */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
 
+.about-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
 
+/* Ensure text is always readable on mobile */
+p, span, a {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
 
+/* Prevent horizontal scroll on mobile */
+.section-container,
+.hero-container,
+.cards-container,
+.skills-container,
+.contact-container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
+/* Touch-friendly button sizes */
+button, .btn, .icon {
+  min-height: 44px;
+  min-width: 44px;
+}
 
+/* Better spacing for mobile */
+section {
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}
 
+/* Optimize typography for mobile readability */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  h1, h2, h3 {
+    line-height: 1.2;
+  }
+  
+  p {
+    margin-bottom: 1rem;
+  }
+}
 
+/* Ensure smooth scroll behavior on mobile */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
 
+/* Fix for iOS Safari viewport issues */
+@supports (-webkit-touch-callout: none) {
+  .hero-container {
+    min-height: -webkit-fill-available;
+  }
+}
 
+/* Performance optimizations for mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
 
+/* Improve scrolling performance on mobile */
+.cards-container,
+.skills-container,
+.contact-container {
+  -webkit-overflow-scrolling: touch;
+}
 
+/* Better focus states for accessibility */
+button:focus,
+.btn:focus,
+a:focus {
+  outline: 2px solid #4070f4;
+  outline-offset: 2px;
+}
+
+/* Prevent zoom on input focus (iOS) */
+input, textarea, select {
+  font-size: 16px;
+}
+
+/* Optimize animations for mobile */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode support for mobile */
+@media (prefers-color-scheme: dark) {
+  .menu-links {
+    background-color: #1a1a1a;
+    color: white;
+  }
+  
+  .menu-links a {
+    color: white;
+    border-bottom-color: #333;
+  }
+  
+  .menu-links a:hover {
+    background-color: #333;
+    color: #4070f4;
+  }
+}
+
+/* Scroll Animations */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-animate.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Specific animation variants */
+.section__pic-container.scroll-animate {
+  transform: translateX(-50px) scale(0.8);
+}
+
+.section__pic-container.animate-in {
+  transform: translateX(0) scale(1);
+}
+
+.card.scroll-animate {
+  transform: translateY(80px) rotateX(10deg);
+  opacity: 0;
+}
+
+.card.animate-in {
+  transform: translateY(0) rotateX(0);
+  opacity: 1;
+}
+
+.title.scroll-animate {
+  transform: translateY(30px) scale(0.9);
+  opacity: 0;
+}
+
+.title.animate-in {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.contact-card.scroll-animate {
+  transform: translateY(40px) scale(0.95);
+  opacity: 0;
+}
+
+.contact-card.animate-in {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.skills-category.scroll-animate {
+  transform: translateX(-30px);
+  opacity: 0;
+}
+
+.skills-category.animate-in {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Stagger animations */
+.stagger-container .stagger-item {
+  transition-delay: 0s;
+}
+
+.stagger-container .stagger-item:nth-child(1) { transition-delay: 0.1s; }
+.stagger-container .stagger-item:nth-child(2) { transition-delay: 0.2s; }
+.stagger-container .stagger-item:nth-child(3) { transition-delay: 0.3s; }
+.stagger-container .stagger-item:nth-child(4) { transition-delay: 0.4s; }
+.stagger-container .stagger-item:nth-child(5) { transition-delay: 0.5s; }
+.stagger-container .stagger-item:nth-child(6) { transition-delay: 0.6s; }
+
+/* Navbar scroll animation */
+#desktop-nav, #hamburger-nav {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Enhanced parallax effect */
+.section__pic-container {
+  transition: transform 0.1s ease-out;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Progress bar animation enhancement */
+.progress {
+  transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: left center;
+}
+
+.progress.animate-in {
+  animation: progressGrow 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes progressGrow {
+  from {
+    width: 0 !important;
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Fade-in animations for text elements */
+.section__text__p1.scroll-animate {
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.section__text__p2.scroll-animate {
+  transform: translateY(25px);
+  opacity: 0;
+  transition-delay: 0.1s;
+}
+
+/* Hover enhancements with animations */
+.card {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.contact-card {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Mobile animation optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-animate {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+  
+  .progress {
+    transition: none;
+  }
+  
+  #desktop-nav, #hamburger-nav {
+    transition: none;
+  }
+}
+
+/* Loading animation for initial page load */
+.animate-text {
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 
 
